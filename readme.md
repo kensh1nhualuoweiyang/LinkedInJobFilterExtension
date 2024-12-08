@@ -6,7 +6,8 @@ To address this, I created a small Chrome extension designed to filter out unwan
 <h1>Steps to Enable the Filter</h1> 
 <ol> 
     <li>Clone the repository to your local directory.</li>
-    <li>Navigate to the target directory and execute dependency installment with  <code>npm install</code> and build using <code>npm run build</code>.</li> <li>Once the build is complete, open Chrome and go to <code>chrome://extensions</code>.</li> 
+    <li>Navigate to the target directory and execute dependency installment with  <code>npm install</code> and build using <code>npm run build</code>.</li> 
+    <li>Once the build is complete, open Chrome and go to <code>chrome://extensions</code>.</li> 
     <li>Enable "Developer mode" in the top-right corner of the page.</li> 
     <li>Click on <code>Load unpacked</code> in the top-left menu and select the generated <code>build</code> folder.</li>
     <li>The extension will be added to Chrome. At this point, the extension is defaulted to be turn on and ready.</li> 
