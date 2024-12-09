@@ -31,13 +31,12 @@ function App() {
   }
 
   useEffect(() => {
-    if (typeof chrome !== "undefined" && chrome.storage) {
-      chrome.storage.sync.get(['blockedCompanies'], (result) => {
-        const companies = result.blockedCompanies || [];
-        setBlockedCompanies(companies);
-       
-      });
-    }
+    
+    chrome.storage.sync.get(['blockedCompanies'], (result) => {
+      const companies = result.blockedCompanies || [];
+      setBlockedCompanies(companies);
+    });
+    
   }, []);
   
 
