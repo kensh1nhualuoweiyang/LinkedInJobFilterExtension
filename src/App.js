@@ -44,7 +44,7 @@ function App() {
       setBlockedCompanies(companies);
     });
     
-  }, []);
+  }, chrome.storage);
   
 
 
