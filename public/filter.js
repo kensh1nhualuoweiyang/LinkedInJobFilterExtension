@@ -9,7 +9,6 @@ const defaultCompanies =[
     "WayUp",
     "Outlier",
     "Tata Consultancy Services",
-    "Beaconfire"
 ]
 
 
@@ -28,6 +27,7 @@ function filterJobs() {
      
     chrome.storage.sync.get(["blockedCompanies"], (result) => {
         const blockedCompanies = result.blockedCompanies || []
+        console.log(blockedCompanies)
         jobs.forEach(job => {
             const companyNameElement = job.querySelector('.artdeco-entity-lockup__subtitle');
             const companyName = companyNameElement ? companyNameElement.textContent.trim() : '';

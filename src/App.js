@@ -30,6 +30,13 @@ function App() {
     })
   }
 
+  const copyFilter = () =>{
+    chrome.storage.sync.get(['blockedCompanies'], (result) =>{
+      const str = " NOT "  + result.blockedCompanies.join(" NOT ")
+      navigator.clipboard.writeText(str)
+    })
+  }
+
   useEffect(() => {
     
     chrome.storage.sync.get(['blockedCompanies'], (result) => {
@@ -46,14 +53,20 @@ function App() {
         <input value={newCompany}
         className = ' block w-full p-2 text-gray-900 border border-gray-500 rounded-lg bg-gray-50 text-base  dark:bg-gray-700 dark:border-gray-600  dark:text-white ' 
         onChange={(e) => setNewCompany(e.target.value)}></input>
-        <button className = 'mt-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'
-          onClick={() => addCompany(newCompany)}> Add To Filter</button>
+        <div className='flex'>
+          <button className = 'mt-2 mx-auto text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'
+            onClick={() => addCompany(newCompany)}> Add To Filter
+          </button>
+          <button className = 'mt-2 mx-auto text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'
+            onClick={() => copyFilter()}> Copy Query To Clipboard
+          </button>
+        </div>
+      
         <ul>
           {
             blockedCompanies.map((item,index) =>(
               
               <li className={`block px-3 border border-gray-500 bg-gray-100 dark:border-gray-600  rounded-lg ${index == blockedCompanies.length-1 ? "" : "mb-1"}`}>
-                {console.log(index, item)}
                 <div className='flex flex-wrap items-center justify-between -m-2'>
                   <span className='w-auto px-3 py-2 font-semibold tracking-tight'>
                     {item}
